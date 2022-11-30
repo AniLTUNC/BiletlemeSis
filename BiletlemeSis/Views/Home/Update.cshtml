@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@model BiletlemeSis.Models.Customer
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <form class="form-horizontal" action="/Customer/Update" method="post">
+                <div class="card-body">
+                    <h4 class="card-title">Müşteri Güncelleme Ekranı</h4>
+                    <input type="text" name="Id" value="@Model.Id" hidden />
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="fname" class="control-label col-form-label">Müşteri Adı</label>
+                            <input type="text" name="CustomerName" class="form-control" id="CustomerName" placeholder="Lütfen Müşteri Adınızı Giriniz......" @Model.Name required>
+                        </div>
+                        <div class="col-6">
+                            <label for="fname" class="control-label col-form-label">Müşteri Telefonu</label>
+                            <input type="text" name="CustomerSurname" class="form-control" id="CustomerSurname" placeholder="Lütfen Müşteri Soyadınızı Giriniz......" @Model.Surname required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="fname" class="control-label col-form-label">Pazaryeri Adı</label>
+                            <select name="CustomerId" id="CustomerId" class="form-control">
+                                @foreach (var item in ViewBag.Customer)
+                                {
+                                    if (item.Id == Model.Id)
+                                    {
+                                        <option selected value="@item.Id">@item.CustomerName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.CustomerName</option>
+                                    }
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="fname" class="control-label col-form-label">Müşteri Adresi</label>
+                            <textarea class="form-control" id="CustomerEmail" placeholder="Lütfen Müşteri Email Giriniz....." required>@Model.Email</textarea>
+                        </div>
+                        <div class="col-6">
+                            <label for="fname" class="control-label col-form-label">Müşteri Telefonu</label>
+                            <input type="text" name="CustomerBirthday" class="form-control" id="CustomerBirthday" placeholder="Lütfen Müşteri Soyadınızı Giriniz......" @Model.Birthday required>
+                        </div>
+                        <div class="col-6">
+                            <label for="fname" class="control-label col-form-label">Müşteri Telefonu</label>
+                            <input type="text" name="CustomerCreateDate" class="form-control" id="CustomerCreateDate" placeholder="Lütfen Müşteri Soyadınızı Giriniz......" @Model.CreateDate required>
+                        </div>
+                        <div class="col-6">
+                            <label for="fname" class="control-label col-form-label">Müşteri Telefonu</label>
+                            <input type="text" name="CustomerMale" class="form-control" id="CustomerMale" placeholder="Lütfen Müşteri Soyadınızı Giriniz......" @Model.Male required>
+                        </div>
+                        <div class="col-6">
+                            <label for="fname" class="control-label col-form-label">Müşteri Telefonu</label>
+                            <input type="text" name="CustomerTelephoneNumber" class="form-control" id="CustomerTelephoneNumber" placeholder="Lütfen Müşteri Soyadınızı Giriniz......" @Model.TelephoneNumber required>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" id="saveData" class="btn btn-primary"><i class="fa fa-save"></i> Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
